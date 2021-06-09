@@ -3,6 +3,4 @@ Animation training playground
 
 Demo :
 
-
-https://user-images.githubusercontent.com/57149527/121430616-9cde3980-c978-11eb-8fa9-16d7106e154c.mp4
-
+https://user-images.githubusercontent.com/57149527/121430972-183feb00-c979-11eb-8fb2-c0a4a98b8dc6.mov
