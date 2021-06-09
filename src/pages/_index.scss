@@ -1,0 +1,126 @@
+@use "../abstracts/variables" as v;
+@use "../abstracts/animations" as a;
+
+$noOfCh: 21;
+$typingSpeed: 2.5s;
+$blinkingSpeed: .75s;
+
+.container {
+  height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  place-content: center;
+  place-items: center;
+
+  position: relative;
+
+  .background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &--1,
+    &--2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    
+    &--1 {
+      background-color: v.$primary;
+
+      animation:
+        slideToLeft
+        1.4s
+        cubic-bezier(0.33, 1, 0.68, 1)
+        ($typingSpeed + 2s)
+        forwards;
+    }
+
+    &--2 {
+      z-index: -1;
+
+      background-image: url('/assets/images/landing.jpg');
+      background-size: cover;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+
+    opacity: 0;
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%) rotate(45deg);
+
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid v.$text;
+
+    border-left-color: transparent;
+    border-top-color: transparent;
+
+    animation:
+      fadeInUpArrow .8s ease ($typingSpeed + 3s) forwards,
+      bounceArrow .5s ease ($typingSpeed + 3.8s) infinite alternate;
+  }
+}
+
+.welcome {
+  z-index: 1;
+  position: relative;
+  width: max-content;
+
+  animation: scaleUp .8s ($typingSpeed + 3s) forwards;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &::before {
+    background: v.$primary;
+    animation: typing $typingSpeed steps(#{$noOfCh}) 1s forwards;
+  }
+  
+  &::after {
+    width: 2px;
+    background: v.$text;
+
+    animation: 
+      typing $typingSpeed steps(#{$noOfCh}) 1s forwards,
+      blinkAnimation $blinkingSpeed steps(#{$noOfCh}) infinite;
+  }
+}
+
+.animated-sub {
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(5rem);
+  
+  animation:
+    fadeInUp 1s ease ($typingSpeed + 1s) forwards,
+    scaleUp .8s ($typingSpeed + 3s) forwards;
+}
+
+.additionnal-text {
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 2;
+  max-width: 120rem;
+  opacity: 0;
+  transform: translateY(5rem);
+
+  animation: fadeInUp .8s ease ($typingSpeed + 3s) forwards;
+}

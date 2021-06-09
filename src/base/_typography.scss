@@ -1,0 +1,19 @@
+@use "../abstracts//variables" as v;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+
+body {
+  font-family: sans-serif;
+  font-size: 1.6rem;
+
+  color: v.$text;
+}
+
+.title {
+  font-family: "Source Code Pro", monospace;
+  font-size: 5rem;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+}
